@@ -2,7 +2,7 @@ import * as coda from "@codahq/packs-sdk";
 import * as helpers from "./helpers";
 import * as schemas from "./schemas";
 
-export const pack = coda.newPack({ version: "5.3" });
+export const pack = coda.newPack();
 
 pack.setUserAuthentication({
   type: coda.AuthenticationType.OAuth2,

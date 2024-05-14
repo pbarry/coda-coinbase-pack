@@ -6,9 +6,9 @@ import * as coda from "@codahq/packs-sdk";
 
 export const WalletSchema = coda.makeObjectSchema({
   type: coda.ValueType.Object,
-  id: "id",
-  primary: "name",
-  featured: ['balance', 'currency', 'balance_str', 'balance_usd', 'current_price'],
+  idProperty: "id",
+  displayProperty: "name",
+  featuredProperties: ['balance', 'currency', 'balance_str', 'balance_usd', 'current_price'],
   properties: {
     id: { type: coda.ValueType.String },
     name: { type: coda.ValueType.String },
@@ -22,9 +22,9 @@ export const WalletSchema = coda.makeObjectSchema({
 
 export const TransactionSchema = coda.makeObjectSchema({
   type: coda.ValueType.Object,
-  id: "id",
-  primary: "description",
-  featured: ['wallet', 'type', 'updated_at', 'status', 'amount_crypto', 'amount_fiat'],
+  idProperty: "id",
+  displayProperty: "description",
+  featuredProperties: ['wallet', 'type', 'created_at', 'updated_at', 'status', 'amount_crypto', 'amount_fiat'],
   properties: {
     id: { type: coda.ValueType.Number },
     wallet: WalletSchema,
@@ -32,7 +32,7 @@ export const TransactionSchema = coda.makeObjectSchema({
     status: { type: coda.ValueType.String },
     amount_crypto: {
       type: coda.ValueType.Object,
-      primary: 'as_string',
+      displayProperty: 'as_string',
       properties: {
         amount: { type: coda.ValueType.Number },
         currency: { type: coda.ValueType.String },
@@ -41,7 +41,7 @@ export const TransactionSchema = coda.makeObjectSchema({
     },
     amount_fiat: {
       type: coda.ValueType.Object,
-      primary: 'as_string',
+      displayProperty: 'as_string',
       properties: {
         amount: { type: coda.ValueType.Number, codaType: coda.ValueHintType.Currency },
         currency: { type: coda.ValueType.String },
